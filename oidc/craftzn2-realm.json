@@ -444,9 +444,9 @@
   "otpPolicyPeriod": 30,
   "otpPolicyCodeReusable": false,
   "otpSupportedApplications": [
-    "totpAppFreeOTPName",
     "totpAppGoogleName",
-    "totpAppMicrosoftAuthenticatorName"
+    "totpAppMicrosoftAuthenticatorName",
+    "totpAppFreeOTPName"
   ],
   "webAuthnPolicyRpEntityName": "keycloak",
   "webAuthnPolicySignatureAlgorithms": [
@@ -642,10 +642,10 @@
       "alwaysDisplayInConsole": true,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "http://localhost:8081/*"
+        "http://auth-server:8081/*"
       ],
       "webOrigins": [
-        "http://localhost:8081"
+        "http://auth-server:8081"
       ],
       "notBefore": 0,
       "bearerOnly": false,
@@ -1371,6 +1371,37 @@
   "components": {
     "org.keycloak.services.clientregistration.policy.ClientRegistrationPolicy": [
       {
+        "id": "d51c9e30-1185-4a10-b8db-d1099f80b587",
+        "name": "Allowed Protocol Mapper Types",
+        "providerId": "allowed-protocol-mappers",
+        "subType": "authenticated",
+        "subComponents": {},
+        "config": {
+          "allowed-protocol-mapper-types": [
+            "oidc-address-mapper",
+            "oidc-usermodel-attribute-mapper",
+            "oidc-usermodel-property-mapper",
+            "saml-role-list-mapper",
+            "saml-user-property-mapper",
+            "saml-user-attribute-mapper",
+            "oidc-full-name-mapper",
+            "oidc-sha256-pairwise-sub-mapper"
+          ]
+        }
+      },
+      {
+        "id": "621e2827-7e9c-42b9-8cb4-8abbe0b9842b",
+        "name": "Max Clients Limit",
+        "providerId": "max-clients",
+        "subType": "anonymous",
+        "subComponents": {},
+        "config": {
+          "max-clients": [
+            "200"
+          ]
+        }
+      },
+      {
         "id": "a8abcd09-ab9f-4d2b-b0f2-aa223f0f9f7d",
         "name": "Trusted Hosts",
         "providerId": "trusted-hosts",
@@ -1401,25 +1432,6 @@
             "saml-user-attribute-mapper",
             "oidc-sha256-pairwise-sub-mapper",
             "saml-role-list-mapper"
-          ]
-        }
-      },
-      {
-        "id": "d51c9e30-1185-4a10-b8db-d1099f80b587",
-        "name": "Allowed Protocol Mapper Types",
-        "providerId": "allowed-protocol-mappers",
-        "subType": "authenticated",
-        "subComponents": {},
-        "config": {
-          "allowed-protocol-mapper-types": [
-            "oidc-address-mapper",
-            "oidc-usermodel-attribute-mapper",
-            "oidc-usermodel-property-mapper",
-            "saml-role-list-mapper",
-            "saml-user-property-mapper",
-            "saml-user-attribute-mapper",
-            "oidc-full-name-mapper",
-            "oidc-sha256-pairwise-sub-mapper"
           ]
         }
       },
@@ -1456,22 +1468,18 @@
         "config": {}
       },
       {
-        "id": "621e2827-7e9c-42b9-8cb4-8abbe0b9842b",
-        "name": "Max Clients Limit",
-        "providerId": "max-clients",
-        "subType": "anonymous",
-        "subComponents": {},
-        "config": {
-          "max-clients": [
-            "200"
-          ]
-        }
-      },
-      {
         "id": "fb446bb6-2d5d-41ee-8464-0952d95c945c",
         "name": "Full Scope Disabled",
         "providerId": "scope",
         "subType": "anonymous",
+        "subComponents": {},
+        "config": {}
+      }
+    ],
+    "org.keycloak.userprofile.UserProfileProvider": [
+      {
+        "id": "4aa498f5-b2b4-4b3f-a31e-9e0257e1fcbb",
+        "providerId": "declarative-user-profile",
         "subComponents": {},
         "config": {}
       }

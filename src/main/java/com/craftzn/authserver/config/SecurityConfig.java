@@ -30,7 +30,7 @@ class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/v1/users**")
+                .antMatchers("/users*")
                 .hasRole("USER")
                 .anyRequest()
                 .authenticated();
@@ -38,7 +38,7 @@ class SecurityConfig {
                 .and()
                 .logout()
                 .addLogoutHandler(keycloakLogoutHandler)
-                .logoutSuccessUrl("/v1/logout");
+                .logoutSuccessUrl("/logout");
         http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
         return http.build();
     }

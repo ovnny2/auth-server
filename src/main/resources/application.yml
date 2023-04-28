@@ -22,7 +22,7 @@ spring:
             client-id: auth-server
             client-name: auth-server
             authorization-grant-type: authorization_code
-            redirect-uri: http://auth-server:8081/login/oauth2/code/keycloak
+            redirect-uri: http://auth-server:8081/login/oauth2/code/auth-server
             scope: openid
         provider:
           keycloak:
@@ -31,7 +31,7 @@ spring:
 
       resourceserver:
         jwt:
-          issuer-uri: http://keycloak-sso:8080/realms/craftzn/protocol/openid-connect/auth
+          issuer-uri: http://keycloak-sso:8080/realms/craftzn
 
   profiles:
     active: dev

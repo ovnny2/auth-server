@@ -6,7 +6,7 @@ keycloak:
   public-client: true
   hostname-url: http://keycloak-sso:8080
   hostname-strict-https: false
-  hostname-strict-backchannel: true
+  hostname-strict-backchannel: false
   ssl-required: none
   statistics-enable: true
   health-enable: true

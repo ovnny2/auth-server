@@ -3,6 +3,6 @@ WORKDIR /
 ARG JAR_FILE=/build/libs/*.jar
 
 COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java", "-jar", "/app.jar", "-b", "0.0.0.0", "--debug"]
+ENTRYPOINT ["java","-jar","/app.jar","--debug"]
 
 EXPOSE 8081

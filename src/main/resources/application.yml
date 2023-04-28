@@ -1,40 +1,37 @@
+server:
+  port: 8081
+
 keycloak:
   realm: craftzn
   resource: auth-server
   public-client: true
+  hostname-url: http://keycloak-sso:8080
+  hostname-strict-https: false
+  hostname-strict-backchannel: true
   ssl-required: none
-  auth-server-url: http://keycloack-sso:8080
-  hostname-url: http://keycloack-sso:8080
+  statistics-enable: true
+  health-enable: true
+  spi-connections-http-client-default:disable-trust-manager: false
 
 spring:
-  profiles:active: dev
-
-  compression:
-    enabled: true
-    min-response-size: 1
-    connection-timeout: 5000
-
   security:
     oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: http://keycloack-sso:8080/realms/craftzn
-
-      provider:
-        keycloak:
-          issuer-uri: http://keycloak-sso:8080/realms/craftzn
-          authorization-uri: http://keycloack-sso:8080/realms/craftzn/protocol/openid-connect/auth
-          token-uri: http://keycloack-sso:8080/realms/craftzn/protocol/openid-connect/token
-          user-info-uri: http://keycloack-sso:8080/realms/craftzn/protocol/openid-connect/userinfo
-          jwk-set-uri: http://keycloack-sso:8080/realms/craftzn/protocol/openid-connect/certs
-          user-name-attribute: preferred_username
-
       client:
         registration:
           keycloak:
             client-id: auth-server
             client-name: auth-server
             authorization-grant-type: authorization_code
+            redirect-uri: http://auth-server:8081/login/oauth2/code/keycloak
             scope: openid
-            redirect-uri: http://auth-server:8081/login/oauth2/code/auth-server
-#            client-secret:
+        provider:
+          keycloak:
+            issuer-uri: http://keycloak-sso:8080/realms/craftzn
+            user-name-attribute: preferred_username
+
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak-sso:8080/realms/craftzn
+
+  profiles:
+    active: dev

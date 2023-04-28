@@ -2,13 +2,8 @@ FROM quay.io/keycloak/keycloak:21.0.1
 
 ENV KEYCLOAK_ADMIN=admin
 ENV KEYCLOAK_ADMIN_PASSWORD=123456
-ENV KC_HOSTNAME=localhost
-ENV KC_HOSTNAME_PORT=8080
-ENV KC_HTTP_ENABLED=true
-ENV KEYCLOAK_STATISTICS_ENABLED=true
-ENV KEYCLOAK_HEALTH_ENABLED=true
 
-ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "-b", "0.0.0.0"]
 CMD ["start-dev"]
 
 EXPOSE 8080

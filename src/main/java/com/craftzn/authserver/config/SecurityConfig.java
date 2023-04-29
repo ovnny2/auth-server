@@ -31,7 +31,7 @@ class SecurityConfig {
 
     @Bean
     public JwtDecoder jwtDecoder() {
-        return JwtDecoders.fromIssuerLocation("http://keycloak-sso:8080/realms/craftzn");
+        return JwtDecoders.fromIssuerLocation("http://localhost:8080/realms/craftzn");
     }
 
     @Bean

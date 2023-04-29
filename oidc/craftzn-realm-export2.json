@@ -636,7 +636,7 @@
       "clientId": "auth-server",
       "name": "auth-server",
       "description": "",
-      "rootUrl": "http://localhost:8081/home",
+      "rootUrl": "http://localhost:8081",
       "adminUrl": "",
       "baseUrl": "",
       "surrogateAuthRequired": false,
@@ -644,8 +644,7 @@
       "alwaysDisplayInConsole": true,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "http://localhost:8081*",
-        "http://auth-server:8081*"
+        "http://localhost:8081*"
       ],
       "webOrigins": [
         "+"

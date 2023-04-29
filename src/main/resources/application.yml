@@ -5,9 +5,9 @@ keycloak:
   realm: craftzn
   resource: auth-server
   public-client: true
-  hostname-url: http://localhost:8080
+  hostname-url: http://172.21.0.2:8080
   hostname-strict-https: false
-  hostname-strict-backchannel: false
+  hostname-strict-backchannel: true
   ssl-required: none
   statistics-enable: true
   health-enable: true
@@ -21,17 +21,21 @@ spring:
   security:
     oauth2:
       resourceserver:
-        jwt:issuer-uri: http://localhost:8080/realms/craftzn
-        jwk-set-uri: http://localhost:8080/realms/craftzn/protocol/openid-connect/certs
+        jwt:issuer-uri: http://172.21.0.2:8080/realms/craftzn
+        jwk-set-uri: http://172.21.0.2:8080/realms/craftzn/protocol/openid-connect/certs
       client:
         registration:
           keycloak:
             client-id: auth-server
             client-name: auth-server
+            redirect-uri: http://172.21.0.3:8081/login/oauth2/code/keycloak
             authorization-grant-type: authorization_code
             client-authentication-method: basic
             scope: openid
         provider:
           keycloak:
-            issuer-uri: http://localhost:8080/realms/craftzn
+            issuer-uri: http://172.21.0.2:8080/realms/craftzn
+            token-uri: http://172.21.0.2:8080/realms/craftzn/protocol/openid-connect/token
+            user-info-uri: http://172.21.0.2:8080/realms/craftzn/protocol/openid-connect/userinfo
+            jwk-set-uri: http://172.21.0.2:8080/realms/craftzn/protocol/openid-connect/certs
             user-name-attribute: preferred_username

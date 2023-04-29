@@ -1,4 +1,5 @@
-server:port: 8081
+server:
+  port: 8081
 
 keycloak:
   realm: craftzn
@@ -14,21 +15,27 @@ keycloak:
     disable-trust-manager: false
 
 spring:
-  profiles:active: dev
+  profiles:
+    active: dev
 
   security:
     oauth2:
       resourceserver:
-        jwt:issuer-uri: http://keycloak-sso:8080/realms/craftzn
+        jwt:issuer-uri: http://localhost:8080/realms/craftzn
+        jwk-set-uri: http://keycloak-sso:8080/realms/craftzn/protocol/openid-connect/certs
       client:
         registration:
           keycloak:
             client-id: auth-server
             client-name: auth-server
+            redirect-uri: http://auth-server:8081/login/oauth2/code/keycloak
             authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8081/login/oauth2/code/auth-server
+            client-authentication-method: basic
             scope: openid
         provider:
           keycloak:
             issuer-uri: http://keycloak-sso:8080/realms/craftzn
+            token-uri: http://keycloak-sso:8080/realms/craftzn/protocol/openid-connect/token
+            user-info-uri: http://keycloak-sso:8080/realms/craftzn/protocol/openid-connect/userinfo
+            jwk-set-uri: http://keycloak-sso:8080/realms/craftzn/protocol/openid-connect/certs
             user-name-attribute: preferred_username

@@ -636,7 +636,7 @@
       "clientId": "auth-server",
       "name": "auth-server",
       "description": "",
-      "rootUrl": "http://localhost:8080/home",
+      "rootUrl": "http://localhost:8081/home",
       "adminUrl": "",
       "baseUrl": "",
       "surrogateAuthRequired": false,

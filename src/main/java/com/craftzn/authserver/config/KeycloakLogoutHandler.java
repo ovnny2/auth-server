@@ -37,8 +37,7 @@ public class KeycloakLogoutHandler implements LogoutHandler {
                 .fromUriString(endSessionEndpoint)
                 .queryParam("id_token_hint", user.getIdToken().getTokenValue());
 
-        ResponseEntity<String> logoutResponse = restTemplate.getForEntity(
-                builder.toUriString(), String.class);
+        ResponseEntity<String> logoutResponse = restTemplate.getForEntity(builder.toUriString(), String.class);
         if (logoutResponse.getStatusCode().is2xxSuccessful()) {
             logger.info("Successfulley logged out from Keycloak");
         } else {

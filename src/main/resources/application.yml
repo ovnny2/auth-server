@@ -28,7 +28,7 @@ spring:
           keycloak:
             client-id: auth-server
             client-name: auth-server
-            redirect-uri: http://172.21.0.3:8081/login/oauth2/code/keycloak
+            redirect-uri: http://localhost:8081/login/oauth2/code/keycloak
             authorization-grant-type: authorization_code
             client-authentication-method: basic
             scope: openid

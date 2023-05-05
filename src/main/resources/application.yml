@@ -1,6 +1,9 @@
 server:
   port: 8081
 
+feature:
+  upload_scripts: enabled
+
 keycloak:
   realm: craftzn
   resource: auth-server

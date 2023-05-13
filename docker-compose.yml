@@ -1,12 +1,19 @@
 version: '3'
 
 services:
+  config-server:
+    image: config-server
+    container_name: config-server
+    ports:
+      - "8888:8888"
+    networks:
+      keycloak-network:
+        ipv4_address: 172.21.0.6
+
   keycloak-sso:
     image: keycloak-sso
     container_name: keycloak-sso
     environment:
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=123456
       - DB_VENDOR=postgres
       - DB_ADDR=keycloak-db
       - DB_DATABASE=keycloak-db

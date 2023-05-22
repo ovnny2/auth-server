@@ -1,6 +1,7 @@
 package com.craftzn.authserver.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -17,11 +18,11 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 @EnableWebSecurity
 class SecurityConfig {
 
-    @Autowired
-    KeycloakLogoutHandler keycloakLogoutHandler;
+    @Value("${spring.security.oauth2.client.provider.keycloak.issuer-uri}")
+    private String issuerUri;
 
     @Autowired
-    KeycloakConfig keycloakConfig;
+    KeycloakLogoutHandler keycloakLogoutHandler;
 
 
     @Bean
@@ -31,7 +32,7 @@ class SecurityConfig {
 
     @Bean
     public JwtDecoder jwtDecoder() {
-        return JwtDecoders.fromIssuerLocation(keycloakConfig.getIssuerUri());
+        return JwtDecoders.fromIssuerLocation(issuerUri);
     }
 
     @Bean

@@ -4,12 +4,10 @@ server:
 spring:
   application:
     name: auth-server
-
   profiles:
     active: develop
-
   config:
-    import: configserver:http://172.21.0.6:8888/
+    import: configserver:http://172.21.0.6:8888/auth-server-develop.yml/
 
 feature:
   upload_scripts: enabled

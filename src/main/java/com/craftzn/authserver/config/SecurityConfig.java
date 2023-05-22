@@ -21,13 +21,8 @@ class SecurityConfig {
     KeycloakLogoutHandler keycloakLogoutHandler;
 
     @Autowired
-    KeycloakClientProvider keycloakClientProvider;
+    KeycloakConfig keycloakConfig;
 
-    @Autowired
-    KeycloakClientRegistration keycloakClientRegistration;
-
-    @Autowired
-    KeycloakResourceServer keycloakResourceServer;
 
     @Bean
     protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
@@ -36,7 +31,7 @@ class SecurityConfig {
 
     @Bean
     public JwtDecoder jwtDecoder() {
-        return JwtDecoders.fromIssuerLocation(keycloakClientProvider.getIssuerUri());
+        return JwtDecoders.fromIssuerLocation(keycloakConfig.getIssuerUri());
     }
 
     @Bean

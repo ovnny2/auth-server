@@ -8,39 +8,8 @@ spring:
   profiles:
     active: develop
 
-  security:
-    oauth2:
-      client:
-        registration:
-          keycloak:
-            client-id: auth-server
-            client-name: auth-server
-            redirect-uri: http://localhost:8081/login/oauth2/code/keycloak
-            authorization-grant-type: authorization_code
-            client-authentication-method: basic
-            scope: openid
-        provider:
-          keycloak:
-            issuer-uri: http://172.21.0.2:8080/realms/craftzn
-            token-uri: http://172.21.0.2:8080/realms/craftzn/protocol/openid-connect/token
-            jwk-set-uri: http://172.21.0.2:8080/realms/craftzn/protocol/openid-connect/certs
-            user-info-uri: http://172.21.0.2:8080/realms/craftzn/protocol/openid-connect/userinfo
-            user-name-attribute: preferred_username
-      resourceserver:
-        jwt:issuer-uri: http://172.21.0.2:8080/realms/craftzn
-        jwk-set-uri: http://172.21.0.2:8080/realms/craftzn/protocol/openid-connect/certs
+  config:
+    import: optional:configserver:http://172.21.0.6:8888/
 
 feature:
   upload_scripts: enabled
-
-keycloak:
-  realm: craftzn
-  resource: auth-server
-  public-client: true
-  hostname-url: http://172.21.0.2:8080
-  hostname-strict-https: false
-  hostname-strict-backchannel: true
-  ssl-required: none
-  statistics-enable: true
-  health-enable: true
-  spi-connections-http-client-default:disable-trust-manager: false

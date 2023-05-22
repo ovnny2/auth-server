@@ -18,10 +18,27 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 class SecurityConfig {
 
     @Autowired
-    private final KeycloakLogoutHandler keycloakLogoutHandler;
+    KeycloakLogoutHandler keycloakLogoutHandler;
 
-    SecurityConfig(KeycloakLogoutHandler keycloakLogoutHandler) {
+    @Autowired
+    KeycloakClientProvider keycloakClientProvider;
+
+    @Autowired
+    KeycloakClientRegistration keycloakClientRegistration;
+
+    @Autowired
+    KeycloakResourceServer keycloakResourceServer;
+
+    SecurityConfig(
+            KeycloakLogoutHandler keycloakLogoutHandler,
+            KeycloakClientProvider keycloakClientProvider,
+            KeycloakClientRegistration keycloakClientRegistration,
+            KeycloakResourceServer keycloakResourceServer
+    ) {
         this.keycloakLogoutHandler = keycloakLogoutHandler;
+        this.keycloakClientProvider = keycloakClientProvider;
+        this.keycloakClientRegistration = keycloakClientRegistration;
+        this.keycloakResourceServer = keycloakResourceServer;
     }
 
     @Bean
@@ -31,7 +48,7 @@ class SecurityConfig {
 
     @Bean
     public JwtDecoder jwtDecoder() {
-        return JwtDecoders.fromIssuerLocation("http://172.21.0.2:8080/realms/craftzn");
+        return JwtDecoders.fromIssuerLocation(keycloakResourceServer.getIssuerUri());
     }
 
     @Bean

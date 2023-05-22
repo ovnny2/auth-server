@@ -9,7 +9,7 @@ spring:
     active: develop
 
   config:
-    import: optional:configserver:http://172.21.0.6:8888/
+    import: configserver:http://172.21.0.6:8888/
 
 feature:
   upload_scripts: enabled

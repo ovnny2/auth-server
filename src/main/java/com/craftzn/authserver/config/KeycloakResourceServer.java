@@ -1,22 +1,16 @@
 package com.craftzn.authserver.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.stereotype.Component;
 
-@Configuration
-@ConfigurationProperties(prefix = "spring.security.oauth2.resourceserver.jwt")
+@Component
+@RefreshScope
+@ConfigurationProperties(prefix = "keycloak.oauth2.resourceserver")
 public class KeycloakResourceServer {
+    private String jwtIssuerUri;
 
-    private String issuerUri;
-
-    @Deprecated
-    public KeycloakResourceServer() { }
-
-    public String getIssuerUri() {
-        return issuerUri;
-    }
-
-    public void setIssuerUri(String issuerUri) {
-        this.issuerUri = issuerUri;
+    public String getJwtIssuerUri() {
+        return jwtIssuerUri;
     }
 }

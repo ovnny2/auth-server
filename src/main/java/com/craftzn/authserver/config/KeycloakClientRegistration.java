@@ -1,21 +1,19 @@
 package com.craftzn.authserver.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.stereotype.Component;
 
-@Configuration
-@ConfigurationProperties(prefix = "spring.security.oauth2.client.registration.keycloak")
+@Component
+@RefreshScope
+@ConfigurationProperties(prefix = "keycloak.oauth2.client.registration")
 public class KeycloakClientRegistration {
-
     private String clientId;
     private String clientName;
     private String redirectUri;
     private String authorizationGrantType;
     private String clientAuthenticationMethod;
     private String scope;
-
-    @Deprecated
-    public KeycloakClientRegistration() { }
 
     public String getClientId() {
         return clientId;
@@ -39,29 +37,5 @@ public class KeycloakClientRegistration {
 
     public String getScope() {
         return scope;
-    }
-
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
-    }
-
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
-
-    public void setRedirectUri(String redirectUri) {
-        this.redirectUri = redirectUri;
-    }
-
-    public void setAuthorizationGrantType(String authorizationGrantType) {
-        this.authorizationGrantType = authorizationGrantType;
-    }
-
-    public void setClientAuthenticationMethod(String clientAuthenticationMethod) {
-        this.clientAuthenticationMethod = clientAuthenticationMethod;
-    }
-
-    public void setScope(String scope) {
-        this.scope = scope;
     }
 }

@@ -1,7 +1,9 @@
 package com.craftzn.authserver.config;
 
+import com.craftzn.authserver.config.keycloak.KeycloakClientProvider;
+import com.craftzn.authserver.config.keycloak.KeycloakClientRegistration;
+import com.craftzn.authserver.config.keycloak.ResourceServer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,22 +20,18 @@ import org.springframework.security.web.authentication.session.SessionAuthentica
 @EnableWebSecurity
 class SecurityConfig {
 
-    @Value("${spring.security.oauth2.client.provider.keycloak.issuer-uri}")
-    private String issuerUri;
-
     @Autowired
     KeycloakLogoutHandler keycloakLogoutHandler;
 
+    @Autowired
+    KeycloakClientRegistration keycloakClientRegistration;
 
-    @Bean
-    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
-        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
-    }
+    @Autowired
+    KeycloakClientProvider keycloakClientProvider;
 
-    @Bean
-    public JwtDecoder jwtDecoder() {
-        return JwtDecoders.fromIssuerLocation(issuerUri);
-    }
+    @Autowired
+    ResourceServer resourceServer;
+
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
@@ -49,5 +47,15 @@ class SecurityConfig {
                 .logoutSuccessUrl("/v1/logout");
         http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
         return http.build();
+    }
+
+    @Bean
+    protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
+        return new RegisterSessionAuthenticationStrategy(new SessionRegistryImpl());
+    }
+
+    @Bean
+    protected JwtDecoder jwtDecoder() {
+        return JwtDecoders.fromIssuerLocation(keycloakClientProvider.getIssuerUri());
     }
 }

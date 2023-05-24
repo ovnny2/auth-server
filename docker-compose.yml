@@ -61,8 +61,7 @@ services:
         ipv4_address: 172.21.0.4
     depends_on:
       - keycloak-sso
-      - keycloak-db
-      - auth-db
+      - config-server
 
   auth-db:
     image: postgres

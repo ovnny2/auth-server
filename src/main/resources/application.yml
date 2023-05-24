@@ -9,6 +9,3 @@ spring:
   config:
     import: optional:configserver:http://172.21.0.6:8888/
     name: auth-server
-
-feature:
-  upload_scripts: enabled

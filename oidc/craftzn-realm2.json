@@ -472,6 +472,38 @@
   "webAuthnPolicyPasswordlessCreateTimeout": 0,
   "webAuthnPolicyPasswordlessAvoidSameAuthenticatorRegister": false,
   "webAuthnPolicyPasswordlessAcceptableAaguids": [],
+  "users": [
+    {
+      "id": "ee038276-196f-4239-aec3-4989d17cf478",
+      "createdTimestamp": 1683308670061,
+      "username": "vinicius",
+      "enabled": true,
+      "totp": false,
+      "emailVerified": false,
+      "firstName": "Vinícius",
+      "lastName": "Ferreira",
+      "email": "viniciusricardo.ferrera@gmail.com",
+      "credentials": [
+        {
+          "id": "cd6ccbf8-a706-42cf-8fbb-7658959f419d",
+          "type": "password",
+          "createdDate": 1683308782829,
+          "secretData": "{\"value\":\"NP2gES2I3QJxlZOiWPpsilGDslDsJwgsYUv1gNRiTRI=\",\"salt\":\"qRyUyozdUEbNvqo27182HA==\",\"additionalParameters\":{}}",
+          "credentialData": "{\"hashIterations\":27500,\"algorithm\":\"pbkdf2-sha256\",\"additionalParameters\":{}}"
+        }
+      ],
+      "disableableCredentialTypes": [],
+      "requiredActions": [],
+      "realmRoles": [
+        "default-roles-craftzn",
+        "USER"
+      ],
+      "notBefore": 0,
+      "groups": [
+        "/USERS"
+      ]
+    }
+  ],
   "scopeMappings": [
     {
       "clientScope": "offline_access",

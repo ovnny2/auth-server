@@ -21,3 +21,12 @@
   - ![img_4.png](src/main/resources/static/img_4.png)
 - ### RESPONSE 200 OK
   - ![img_5.png](src/main/resources/static/img_5.png)
+
+
+## Api Gateway Keycloak Client Authentication Flow [FAIL]
+- ![img.png](src/main/resources/static/keycloak_oauth_flow.png)
+- ![img.png](src/main/resources/static/outgoing_request_flow.png)
+
+## Auth Server Keycloak Client Authentication Flow [SUCCESS]
+- ![img.png](src/main/resources/static/auth-server-authentication.png)
+- ![img.png](src/main/resources/static/outgoing-auth-server-authentication.png)

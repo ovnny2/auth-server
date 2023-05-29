@@ -16,50 +16,48 @@ public class KeycloakClientRegistration {
     private String clientAuthenticationMethod;
     private String scope;
 
-    // Getters and Setters
-
     public String getClientId() {
         return clientId;
-    }
-
-    public void setClientId(String clientId) {
-        this.clientId = clientId;
     }
 
     public String getClientName() {
         return clientName;
     }
 
-    public void setClientName(String clientName) {
-        this.clientName = clientName;
-    }
-
     public String getRedirectUri() {
         return redirectUri;
-    }
-
-    public void setRedirectUri(String redirectUri) {
-        this.redirectUri = redirectUri;
     }
 
     public String getAuthorizationGrantType() {
         return authorizationGrantType;
     }
 
-    public void setAuthorizationGrantType(String authorizationGrantType) {
-        this.authorizationGrantType = authorizationGrantType;
-    }
-
     public String getClientAuthenticationMethod() {
         return clientAuthenticationMethod;
     }
 
-    public void setClientAuthenticationMethod(String clientAuthenticationMethod) {
-        this.clientAuthenticationMethod = clientAuthenticationMethod;
-    }
-
     public String getScope() {
         return scope;
+    }
+
+    public void setClientId(String clientId) {
+        this.clientId = clientId;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
+    }
+
+    public void setRedirectUri(String redirectUri) {
+        this.redirectUri = redirectUri;
+    }
+
+    public void setAuthorizationGrantType(String authorizationGrantType) {
+        this.authorizationGrantType = authorizationGrantType;
+    }
+
+    public void setClientAuthenticationMethod(String clientAuthenticationMethod) {
+        this.clientAuthenticationMethod = clientAuthenticationMethod;
     }
 
     public void setScope(String scope) {

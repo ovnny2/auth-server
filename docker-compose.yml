@@ -10,6 +10,15 @@ services:
       keycloak-network:
         ipv4_address: 172.21.0.6
 
+  api-gateway:
+    image: api-gateway
+    container_name: api-gateway
+    ports:
+      - "8010:8010"
+    networks:
+      keycloak-network:
+        ipv4_address: 172.21.0.10
+
   keycloak-sso:
     image: keycloak-sso
     container_name: keycloak-sso

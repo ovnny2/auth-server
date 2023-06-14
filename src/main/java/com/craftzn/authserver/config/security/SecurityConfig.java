@@ -1,7 +1,8 @@
-package com.craftzn.authserver.config;
+package com.craftzn.authserver.config.security;
 
 import com.craftzn.authserver.config.keycloak.KeycloakClientProvider;
 import com.craftzn.authserver.config.keycloak.KeycloakClientRegistration;
+import com.craftzn.authserver.config.keycloak.KeycloakLogoutHandler;
 import com.craftzn.authserver.config.keycloak.ResourceServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

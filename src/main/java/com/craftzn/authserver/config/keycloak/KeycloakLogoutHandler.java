@@ -1,4 +1,4 @@
-package com.craftzn.authserver.config;
+package com.craftzn.authserver.config.keycloak;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

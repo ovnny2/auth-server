@@ -678,7 +678,6 @@
       "alwaysDisplayInConsole": true,
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
-        "http://localhost:8010*",
         "http://localhost:8081*"
       ],
       "webOrigins": [

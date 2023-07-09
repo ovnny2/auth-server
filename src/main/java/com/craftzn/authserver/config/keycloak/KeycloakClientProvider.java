@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Configuration
-@ConfigurationProperties(prefix = "spring.security.oauth2.client.provider.keycloak")
+@ConfigurationProperties(prefix = "spring.security.oauth2.client.provider.security")
 public class KeycloakClientProvider {
 
     private String issuerUri;

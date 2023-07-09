@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Configuration
-@ConfigurationProperties(prefix = "spring.security.oauth2.client.registration.keycloak")
+@ConfigurationProperties(prefix = "spring.security.oauth2.client.registration.security")
 public class KeycloakClientRegistration {
 
     private String clientId;

@@ -1,7 +1,5 @@
 package com.craftzn.authserver.config.security;
 
-import com.craftzn.authserver.config.keycloak.ResourceServer;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -15,13 +13,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 class SecurityConfig {
 
-    ResourceServer resourceServer;
-
-    @Autowired
-    public SecurityConfig(ResourceServer resourceServer) {
-        this.resourceServer = resourceServer;
-    }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt);
@@ -31,6 +22,6 @@ class SecurityConfig {
 
     @Bean
     public JwtDecoder jwtDecoder() {
-        return JwtDecoders.fromIssuerLocation(resourceServer.getJwt().getIssuerUri());
+        return JwtDecoders.fromIssuerLocation("http://172.21.0.2:8080/realms/craftzn");
     }
 }
